@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[See What I Will Do RSS Feed]]></title><description><![CDATA[Provide a safe place where people can learn and ask questions about Autism.]]></description><link>https://www.seewhatiwilldo.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 04 May 2022 21:16:26 GMT</lastBuildDate><item><title><![CDATA[Welcome!]]></title><description><![CDATA[Welcome! My hope in sharing our story of Autism is to provide a safe place where people can learn and ask questions about Autism. This is a…]]></description><link>https://www.seewhatiwilldo.com/welcome/</link><guid isPermaLink="false">https://www.seewhatiwilldo.com/welcome/</guid><pubDate>Mon, 02 May 2022 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[See What I Will Do RSS Feed]]></title><description><![CDATA[Provide a safe place where people can learn and ask questions about Autism.]]></description><link>https://www.seewhatiwilldo.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 04 May 2022 21:17:20 GMT</lastBuildDate><item><title><![CDATA[Welcome!]]></title><description><![CDATA[Welcome! My hope in sharing our story of Autism is to provide a safe place where people can learn and ask questions about Autism. This is a…]]></description><link>https://www.seewhatiwilldo.com/welcome/</link><guid isPermaLink="false">https://www.seewhatiwilldo.com/welcome/</guid><pubDate>Mon, 02 May 2022 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/seewhatiwilldo-spa/static/00d5a8619d1e7bd9a4aba87909e66232/6a068/profile-pic.jpg&quot;
+    href=&quot;/static/00d5a8619d1e7bd9a4aba87909e66232/6a068/profile-pic.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -17,12 +17,12 @@
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Evan Eating A Cakepop&quot;
         title=&quot;Evan Eating A Cakepop&quot;
-        src=&quot;/seewhatiwilldo-spa/static/00d5a8619d1e7bd9a4aba87909e66232/828fb/profile-pic.jpg&quot;
-        srcset=&quot;/seewhatiwilldo-spa/static/00d5a8619d1e7bd9a4aba87909e66232/ff44c/profile-pic.jpg 158w,
-/seewhatiwilldo-spa/static/00d5a8619d1e7bd9a4aba87909e66232/a6688/profile-pic.jpg 315w,
-/seewhatiwilldo-spa/static/00d5a8619d1e7bd9a4aba87909e66232/828fb/profile-pic.jpg 630w,
-/seewhatiwilldo-spa/static/00d5a8619d1e7bd9a4aba87909e66232/0ede0/profile-pic.jpg 945w,
-/seewhatiwilldo-spa/static/00d5a8619d1e7bd9a4aba87909e66232/6a068/profile-pic.jpg 960w&quot;
+        src=&quot;/static/00d5a8619d1e7bd9a4aba87909e66232/828fb/profile-pic.jpg&quot;
+        srcset=&quot;/static/00d5a8619d1e7bd9a4aba87909e66232/ff44c/profile-pic.jpg 158w,
+/static/00d5a8619d1e7bd9a4aba87909e66232/a6688/profile-pic.jpg 315w,
+/static/00d5a8619d1e7bd9a4aba87909e66232/828fb/profile-pic.jpg 630w,
+/static/00d5a8619d1e7bd9a4aba87909e66232/0ede0/profile-pic.jpg 945w,
+/static/00d5a8619d1e7bd9a4aba87909e66232/6a068/profile-pic.jpg 960w&quot;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
