@@ -1,38 +1,23 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
-import Bio from "../components/bio"
+// import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
-
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Seo title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
+const BlogIndex = (props) => {
+  const { title } = props.data.site.siteMetadata
+  const { allNodeArticle } = props.data
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={title}>
       <Seo title="All posts" />
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-          {posts.map(post => {
-            const title = post.frontmatter.title || post.fields.slug
-
+          {allNodeArticle.edges.map(edge => {
             return (
-              <div key={post.fields.slug}>
+              <div key={edge.node.id}>
                 <article
                   className="post-preview"
                   itemScope
@@ -40,17 +25,18 @@ const BlogIndex = ({ data, location }) => {
                 >
                   <header>
                     <h2>
-                      <Link to={post.fields.slug} itemProp="url">
-                        <span itemProp="headline">{title}</span>
+                      <Link to={edge.node.path?.alias} itemProp="url">
+                        <span itemProp="headline">{edge.node.title}</span>
                       </Link>
                     </h2>
-                    <small>{post.frontmatter.date}</small>
+                    <small>{edge.node.created}</small>
                   </header>
                   <section>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: post.frontmatter.description || post.excerpt,
-                      }}
+                  <div style={{ maxWidth: `300px`, marginBottom: `1.45rem`, width: `100%` }}>
+                    <Img fluid={ edge.node.relationships.field_image?.localFile?.childImageSharp.fluid } />
+                  </div>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: edge.node.body.value.split(' ').splice(0, 75).join(' ') + '...'}}
                       itemProp="description"
                     />
                   </section>
@@ -71,18 +57,39 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
+        author {
+          name
+        }
+        siteUrl
+        social {
+          facebook
+        }
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+    allNodeArticle(sort: {fields: [created], order: DESC}) {
+      edges {
+        node {
+          id
+          path {
+            alias
+          }
           title
-          description
+          body {
+            value
+          }
+          created(formatString: "MMM DD, YYYY")
+          relationships {
+            field_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 400, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

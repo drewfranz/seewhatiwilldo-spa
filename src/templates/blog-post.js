@@ -1,20 +1,21 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
+  const post = data.nodeArticle
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={post.title}
+        description={post.body.processed.split(' ').splice(0, 50).join(' ')}
       />
       <article
         className="blog-post"
@@ -22,13 +23,16 @@ const BlogPostTemplate = ({ data, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <h1 itemProp="headline">{post.title}</h1>
+          <p>{post.created}</p>
         </header>
         <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
-        />
+        >
+          <Img fluid={ post.relationships.field_image?.localFile?.childImageSharp.fluid } />
+          <div
+          dangerouslySetInnerHTML={{ __html: post.body.processed }} />
+        </section>
         <hr />
         <footer>
           <Bio />
@@ -46,15 +50,15 @@ const BlogPostTemplate = ({ data, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+              <Link to={previous.fields.path?.alias} rel="prev">
+                ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+              <Link to={next.fields.path?.alias} rel="next">
+                {next.title} →
               </Link>
             )}
           </li>
@@ -66,41 +70,30 @@ const BlogPostTemplate = ({ data, location }) => {
 
 export default BlogPostTemplate
 
-export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
+export const query = graphql`
+  query($ArticleId: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    nodeArticle(id: { eq: $ArticleId }) {
       id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
+      title
+      body {
+        processed
+        value
       }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
+      relationships {
+        field_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 400, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
   }
