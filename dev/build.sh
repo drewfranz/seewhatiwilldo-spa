@@ -16,6 +16,6 @@ else
   exit 1;
 fi
 
-cd /var/www/seewhatiwilldo-spa
+cd /var/www/seewhatiwilldo.com
 
 npm run build
