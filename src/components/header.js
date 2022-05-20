@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Background from "../images/header.jpeg"
+import Background from "../images/SWIWD_Logo_Green.svg"
 
 const Header = ({title}) => {
     let sectionStyle = {
